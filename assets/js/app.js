@@ -1,15 +1,37 @@
 // Jquery Document Funtions
 
 // document load function
-$(document).ready(function(){});
+$(document).ready(function(){
+    renderButtons();
+    
+    $("#button-addon").on("click", function() {
+        event.preventDefault();
 
+        var inputText = $("#add").val();
+        if(inputText !== ''){
+        topics.push(inputText);
+        $("#add").val('');
+        }
+        
+        
+        
+        
+        
+        console.log(topics);
+        
+        
+        
+    });
+
+    
+});
 
 
 
 
 
 //button click function
-$("<button>").on("click", function() {});
+
 
 // array of topics
 
@@ -26,4 +48,4 @@ function renderButtons(){
 
 }
 
-renderButtons();
+
