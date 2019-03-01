@@ -46,8 +46,10 @@ $(document).on("click", ".animal", getApi);
 // Function getApi with the ajax call
 function getApi() {
   var animal = $(this).attr("data-name");
+  var apiKey = "&api_key=dc6zaTOxFJmzC";
+  var limit = "&limit=12";
   var queryURL =
-    "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + animal;
+    "https://api.giphy.com/v1/gifs/search?q=" + animal + apiKey + limit;
 
   console.log(queryURL);
 
@@ -56,16 +58,22 @@ function getApi() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    var imageURL = response.data.images.original.url;
-    var stillImg = response.data.images.original_still.url;
-    var animateImg = imageURL;
-    // creating image to the DOM and adding the data states
-    var animalImg = $("<img class = 'animalImg m-2'>");
-    animalImg.attr({ src: stillImg, alt: animal });
-    animalImg.attr("data-still", stillImg);
-    animalImg.attr("data-animate", animateImg);
-    animalImg.attr("data-state", "animate");
-    $("#imageHere").prepend(animalImg);
+    // creating 10 image to the DOM and adding the data states
+
+    for (var i = 0; i < response.data.length; i++) {
+      var imageURL = response.data[i].images.downsized.url;
+      var stillImg = response.data[i].images.downsized_still.url;
+      var animateImg = imageURL;
+
+      var animalImg = $(
+        "<img class = 'animalImg img-fluid img-thumbnail m-2'>"
+      );
+      animalImg.attr({ src: stillImg, alt: animal });
+      animalImg.attr("data-still", stillImg);
+      animalImg.attr("data-animate", animateImg);
+      animalImg.attr("data-state", "animate");
+      $("#imageHere").prepend(animalImg);
+    }
   });
 }
 
