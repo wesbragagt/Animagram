@@ -20,8 +20,6 @@ $("#button-addon").on("click", function() {
     $("#add").val("");
     renderButtons();
   }
-
-  console.log(topics);
 });
 
 //button click function
@@ -42,14 +40,10 @@ function renderButtons() {
   }
 }
 
-// function which returns the name of the animal after clicked
-function alertAnimal() {
-  var animalName = $(this).attr("data-name");
-  alert(animalName);
-}
+// if an element with a class of animal is clicked trigger the function getApi
 $(document).on("click", ".animal", getApi);
 
-// setup the ajax call for the giffy api
+// Function getApi with the ajax call
 function getApi() {
   var animal = $(this).attr("data-name");
   var queryURL =
@@ -63,10 +57,21 @@ function getApi() {
     method: "GET"
   }).then(function(response) {
     var imageURL = response.data.images.original.url;
-    console.log(imageURL);
-
+    var stillImg = response.data.images.original_still.url;
+    var animateImg = imageURL;
+    // creating image to the DOM and adding the data states
     var animalImg = $("<img class = 'animalImg m-2'>");
     animalImg.attr({ src: imageURL, alt: animal });
+    animalImg.attr("data-still", stillImg);
+    animalImg.attr("data-animate", animateImg);
+    animalImg.attr("data-state", "animate");
     $("#imageHere").prepend(animalImg);
   });
+}
+
+$(document).on("click", ".animalImg", gifState);
+
+function gifState() {
+  var state = $(this).attr("data-state");
+  alert(state);
 }
