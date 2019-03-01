@@ -3,4 +3,12 @@ body {
   text-align: center;
 }
 
+.animalImg {
+  width: 300px;
+  height: 300px;
+}
 
+.card {
+  min-height: 500px;
+  max-height: auto;
+}
