@@ -61,7 +61,7 @@ function getApi() {
     var animateImg = imageURL;
     // creating image to the DOM and adding the data states
     var animalImg = $("<img class = 'animalImg m-2'>");
-    animalImg.attr({ src: imageURL, alt: animal });
+    animalImg.attr({ src: stillImg, alt: animal });
     animalImg.attr("data-still", stillImg);
     animalImg.attr("data-animate", animateImg);
     animalImg.attr("data-state", "animate");
@@ -77,11 +77,11 @@ function gifState() {
   var still = $(this).attr("data-still");
 
   // condition to change their url based on state
-  if (state === "animate") {
-    $(this).attr("src", still);
-    $(this).attr("data-state", "still");
-  } else {
+  if (state === "still") {
     $(this).attr("src", animate);
     $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", still);
+    $(this).attr("data-state", "still");
   }
 }
