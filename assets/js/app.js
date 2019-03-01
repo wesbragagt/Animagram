@@ -73,5 +73,15 @@ $(document).on("click", ".animalImg", gifState);
 
 function gifState() {
   var state = $(this).attr("data-state");
-  alert(state);
+  var animate = $(this).attr("data-animate");
+  var still = $(this).attr("data-still");
+
+  // condition to change their url based on state
+  if (state === "animate") {
+    $(this).attr("src", still);
+    $(this).attr("data-state", "still");
+  } else {
+    $(this).attr("src", animate);
+    $(this).attr("data-state", "animate");
+  }
 }
