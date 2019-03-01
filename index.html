@@ -30,7 +30,11 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="h1">Animagram</h1>
+      <h1 class="h1 d-inline-block">Animagram</h1>
+      <span
+        >Your place on the web for cute animal giffs, make sure to animate them
+        by clicking on it and it may take a few clicks.</span
+      >
 
       <div class="row">
         <form class="input-group mb-3">
@@ -49,11 +53,18 @@
             >
               Add
             </button>
+            <button
+              type="reset"
+              class="btn btn-outline-danger"
+              id="button-delete"
+            >
+              Delete
+            </button>
           </div>
         </form>
       </div>
 
-      <div id="animal-button" class="row mb-3"></div>
+      <div id="animal-button" class="row mb-3 d-flex flex-wrap"></div>
 
       <div class="row">
         <div

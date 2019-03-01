@@ -21,8 +21,14 @@ $("#button-addon").on("click", function() {
     renderButtons();
   }
 });
+// deletes the previews button added
+$("#button-delete").on("click", function() {
+  event.preventDefault();
+  topics.pop();
+  renderButtons();
+});
 
-//button click function
+// button clear
 
 // array of topics
 
@@ -33,7 +39,7 @@ function renderButtons() {
 
   for (var i = 0; i < topics.length; i++) {
     var animal = topics[i];
-    var button = $("<button class = 'animal mr-1 btn btn-success'/>")
+    var button = $("<button class = 'animal m-1 p- btn btn-success'/>")
       .attr("data-name", animal)
       .text(animal);
     $("#animal-button").append(button);
@@ -45,6 +51,7 @@ $(document).on("click", ".animal", getApi);
 
 // Function getApi with the ajax call
 function getApi() {
+  $("#imageHere").empty();
   var animal = $(this).attr("data-name");
   var apiKey = "&api_key=dc6zaTOxFJmzC";
   var limit = "&limit=12";
