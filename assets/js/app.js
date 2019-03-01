@@ -4,28 +4,32 @@
 $(document).ready(function(){
     renderButtons();
     
-    $("#button-addon").on("click", function() {
-        event.preventDefault();
-
-        var inputText = $("#add").val();
-        if(inputText !== ''){
-        topics.push(inputText);
-        $("#add").val('');
-        }
-        
-        
-        
-        
-        
-        console.log(topics);
-        
-        
-        
-    });
+   
 
     
 });
 
+$("#button-addon").on("click", function() {
+    event.preventDefault();
+
+    var inputText = $("#add").val();
+
+    // condition to only add a new button if a value is being added
+    if(inputText !== ''){
+    topics.push(inputText);
+    $("#add").val('');
+    renderButtons();
+    }
+    
+    
+    
+    
+    
+    console.log(topics);
+    
+    
+    
+});
 
 
 
@@ -38,9 +42,12 @@ $(document).ready(function(){
 var topics = ["dog", "cat", "bird"];
 
 function renderButtons(){
+
+    $("#animal-button").empty();
+
     for (var i = 0; i < topics.length; i++) {
         var animal = topics[i];
-        var button = $("<button class = 'mr-1 btn btn-success'/>").text(animal);
+        var button = $("<button class = 'animal mr-1 btn btn-success'/>").attr("data-name", animal).text(animal);
         $("#animal-button").append(button);
         
         
