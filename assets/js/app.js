@@ -65,6 +65,7 @@ function getApi() {
       var stillImg = response.data[i].images.downsized_still.url;
       var animateImg = imageURL;
 
+      // create images based on response from ajax call
       var animalImg = $(
         "<img class = 'animalImg img-fluid img-thumbnail m-2'>"
       );
@@ -72,6 +73,7 @@ function getApi() {
       animalImg.attr("data-still", stillImg);
       animalImg.attr("data-animate", animateImg);
       animalImg.attr("data-state", "animate");
+
       $("#imageHere").prepend(animalImg);
     }
   });

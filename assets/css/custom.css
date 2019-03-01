@@ -11,3 +11,7 @@ body {
   min-height: 500px;
   max-height: auto;
 }
+
+.animalImg {
+  cursor: pointer;
+}
