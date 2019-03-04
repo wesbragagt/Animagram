@@ -32,7 +32,21 @@ $("#button-delete").on("click", function() {
 
 // array of topics
 
-var topics = ["dog", "cat", "bird"];
+var topics = [
+  "dog",
+  "cat",
+  "bird",
+  "deer",
+  "elephant",
+  "horse",
+  "goat",
+  "chicken",
+  "owl",
+  "raccon",
+  "lion",
+  "cow",
+  "duck"
+];
 
 function renderButtons() {
   $("#animal-button").empty();

@@ -1,5 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
+  background: url(../images/full-bloom.png);
 }
 
 .animalImg {
@@ -14,4 +15,13 @@ body {
 
 .animalImg {
   cursor: pointer;
+}
+
+.animalImg:hover {
+  background: seagreen;
+}
+
+.animalImg:focus {
+  width: 2em;
+  height: 2em;
 }
