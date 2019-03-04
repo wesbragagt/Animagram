@@ -11,14 +11,26 @@ $("#button-addon").on("click", function() {
 
   var inputText = $("#add")
     .val()
-    .trim();
+    .trim()
+    .toLowerCase();
 
-  // condition to only add a new button if a value is being added
+  console.log(inputText);
 
-  if (inputText !== "") {
-    topics.push(inputText);
-    $("#add").val("");
-    renderButtons();
+  // condition to only add a new button if that indeed is an animal and it doesn't already exist
+
+  if (lowerCaseList.indexOf(inputText) !== -1) {
+    if (topics.indexOf(inputText) > -1) {
+      alert(inputText + " has already been added.");
+      return;
+    } else {
+      if (inputText !== "") {
+        topics.push(inputText);
+        $("#add").val("");
+        renderButtons();
+      }
+    }
+  } else {
+    alert(inputText + " is not an acceptable animal");
   }
 });
 // deletes the previews button added
@@ -28,9 +40,9 @@ $("#button-delete").on("click", function() {
   renderButtons();
 });
 
-// button clear
 
-// array of topics
+
+// array of topics and list of animals available to add
 
 var topics = [
   "dog",
@@ -47,6 +59,238 @@ var topics = [
   "cow",
   "duck"
 ];
+var lowerCaseList = [];
+
+// loop through this array of animals and make them lowercase to make it easier to compare with input provided.
+var listOfAnimals = [
+  "Aardvark",
+  "Albatross",
+  "Alligator",
+  "Alpaca",
+  "Ant",
+  "Anteater",
+  "Antelope",
+  "Ape",
+  "Armadillo",
+  "Donkey",
+  "Baboon",
+  "Badger",
+  "Barracuda",
+  "Bat",
+  "Bear",
+  "Beaver",
+  "Bee",
+  "Bison",
+  "Boar",
+  "Buffalo",
+  "Butterfly",
+  "Camel",
+  "Capybara",
+  "Caribou",
+  "Cassowary",
+  "Cat",
+  "Caterpillar",
+  "Cattle",
+  "Chamois",
+  "Cheetah",
+  "Chicken",
+  "Chimpanzee",
+  "Chinchilla",
+  "Chough",
+  "Clam",
+  "Cobra",
+  "Cockroach",
+  "Cod",
+  "Cormorant",
+  "Coyote",
+  "Crab",
+  "Crane",
+  "Crocodile",
+  "Crow",
+  "Curlew",
+  "Deer",
+  "Dinosaur",
+  "Dog",
+  "Dogfish",
+  "Dolphin",
+  "Dotterel",
+  "Dove",
+  "Dragonfly",
+  "Duck",
+  "Dugong",
+  "Dunlin",
+  "Eagle",
+  "Echidna",
+  "Eel",
+  "Eland",
+  "Elephant",
+  "Elk",
+  "Emu",
+  "Falcon",
+  "Ferret",
+  "Finch",
+  "Fish",
+  "Flamingo",
+  "Fly",
+  "Fox",
+  "Frog",
+  "Gaur",
+  "Gazelle",
+  "Gerbil",
+  "Giraffe",
+  "Gnat",
+  "Gnu",
+  "Goat",
+  "Goldfinch",
+  "Goldfish",
+  "Goose",
+  "Gorilla",
+  "Goshawk",
+  "Grasshopper",
+  "Grouse",
+  "Guanaco",
+  "Gull",
+  "Hamster",
+  "Hare",
+  "Hawk",
+  "Hedgehog",
+  "Heron",
+  "Herring",
+  "Hippopotamus",
+  "Hornet",
+  "Horse",
+  "Human",
+  "Hummingbird",
+  "Hyena",
+  "Ibex",
+  "Ibis",
+  "Jackal",
+  "Jaguar",
+  "Jay",
+  "Jellyfish",
+  "Kangaroo",
+  "Kingfisher",
+  "Koala",
+  "Kookabura",
+  "Kouprey",
+  "Kudu",
+  "Lapwing",
+  "Lark",
+  "Lemur",
+  "Leopard",
+  "Lion",
+  "Llama",
+  "Lobster",
+  "Locust",
+  "Loris",
+  "Louse",
+  "Lyrebird",
+  "Magpie",
+  "Mallard",
+  "Manatee",
+  "Mandrill",
+  "Mantis",
+  "Marten",
+  "Meerkat",
+  "Mink",
+  "Mole",
+  "Mongoose",
+  "Monkey",
+  "Moose",
+  "Mosquito",
+  "Mouse",
+  "Mule",
+  "Narwhal",
+  "Newt",
+  "Nightingale",
+  "Octopus",
+  "Okapi",
+  "Opossum",
+  "Oryx",
+  "Ostrich",
+  "Otter",
+  "Owl",
+  "Oyster",
+  "Panther",
+  "Parrot",
+  "Partridge",
+  "Peafowl",
+  "Pelican",
+  "Penguin",
+  "Pheasant",
+  "Pig",
+  "Pigeon",
+  "Pony",
+  "Porcupine",
+  "Porpoise",
+  "Quail",
+  "Quelea",
+  "Quetzal",
+  "Rabbit",
+  "Raccoon",
+  "Rail",
+  "Ram",
+  "Rat",
+  "Raven",
+  "Red deer",
+  "Red panda",
+  "Reindeer",
+  "Rhinoceros",
+  "Rook",
+  "Salamander",
+  "Salmon",
+  "Sand Dollar",
+  "Sandpiper",
+  "Sardine",
+  "Scorpion",
+  "Seahorse",
+  "Seal",
+  "Shark",
+  "Sheep",
+  "Shrew",
+  "Skunk",
+  "Snail",
+  "Snake",
+  "Sparrow",
+  "Spider",
+  "Spoonbill",
+  "Squid",
+  "Squirrel",
+  "Starling",
+  "Stingray",
+  "Stinkbug",
+  "Stork",
+  "Swallow",
+  "Swan",
+  "Tapir",
+  "Tarsier",
+  "Termite",
+  "Tiger",
+  "Toad",
+  "Trout",
+  "Turkey",
+  "Turtle",
+  "Viper",
+  "Vulture",
+  "Wallaby",
+  "Walrus",
+  "Wasp",
+  "Weasel",
+  "Whale",
+  "Wildcat",
+  "Wolf",
+  "Wolverine",
+  "Wombat",
+  "Woodcock",
+  "Woodpecker",
+  "Worm",
+  "Wren",
+  "Yak",
+  "Zebra"
+];
+for (var i = 0; i < listOfAnimals.length; i++) {
+  lowerCaseList.push(listOfAnimals[i].toLowerCase());
+}
 
 function renderButtons() {
   $("#animal-button").empty();
